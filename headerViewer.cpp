@@ -2,20 +2,30 @@
 
 #include <QTimer>
 #include <iostream>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QList>
+#include <QByteArray>
 
 headerViewer::headerViewer()
 {
-    QTimer* timer = new QTimer(this);
-    connect( timer, SIGNAL(timeout()), SLOT(output()) );
-    timer->start( 1000 );
+ QNetworkAccessManager manager;
+ QNetworkRequest request;
+ request.setUrl(QUrl("http://www.example.org"));
+ QNetworkReply *reply = manager.head(request);
+ QList<QByteArray> headerList = reply->rawHeaderList();
+ connect(reply,SIGNAL(finished()),this,SLOT(output(headerList)));
 }
 
 headerViewer::~headerViewer()
 {}
 
-void headerViewer::output()
+void headerViewer::output(QList< QByteArray > headerList)
 {
-    std::cout << "Hello World!" << std::endl;
+  for(int i=0; i<headerList.size(); ++i){
+    QString str(headerList[i].constData());
+    qDebug()<< str;
+  }
 }
 
 #include "headerViewer.moc"
