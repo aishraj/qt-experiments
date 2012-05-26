@@ -1,11 +1,9 @@
 #include "headerViewer.h"
 
-#include <QTimer>
-#include <iostream>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QList>
-#include <QByteArray>
+#include <QtCore>
+#include <QtNetwork>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 headerViewer::headerViewer()
 {
@@ -22,7 +20,7 @@ headerViewer::~headerViewer()
 
 void headerViewer::output(QList< QByteArray > headerList)
 {
-  for(int i=0; i<headerList.size(); ++i){
+  for(int i = 0; i< headerList.size(); ++i){
     QString str(headerList[i].constData());
     qDebug()<< str;
   }

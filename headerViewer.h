@@ -2,7 +2,6 @@
 #define headerViewer_H
 
 #include <QtCore/QObject>
-#include <qnetworkaccessmanager.h>
 
 class headerViewer : public QObject
 {
