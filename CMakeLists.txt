@@ -7,4 +7,4 @@ include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${QT_MODULES} ${Q
 set(headerViewer_SRCS headerViewer.cpp main.cpp)
 qt4_automoc(${headerViewer_SRCS})
 add_executable(headerViewer ${headerViewer_SRCS})
-target_link_libraries(headerViewer ${QT_QTCORE_LIBRARY} ${QT_QT_LIBRARY})
+target_link_libraries(headerViewer ${QT_QTCORE_LIBRARY} ${QT_QT_LIBRARY} ${QT_QTNETWORK_LIBRARY})

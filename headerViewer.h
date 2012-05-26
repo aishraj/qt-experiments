@@ -2,6 +2,9 @@
 #define headerViewer_H
 
 #include <QtCore/QObject>
+#include <QtNetwork>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 class headerViewer : public QObject
 {
@@ -10,7 +13,7 @@ public:
     headerViewer();
     virtual ~headerViewer();
 public slots:
-    void output(QList<QByteArray>);
+    void output(QNetworkReply*);
 
 };
 
