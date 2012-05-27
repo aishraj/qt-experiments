@@ -14,20 +14,12 @@ headerViewer::~headerViewer()
 
 void headerViewer::output(QNetworkReply* reply)
 {
-  QList<QByteArray> headerList = reply->rawHeaderList();
-  QList<QByteArray> headerValues;
-  for(int i = 0; i< headerList.size(); ++i)
+  const QList<QNetworkReply::RawHeaderPair> headers = reply->rawHeaderPairs();
+  foreach(const QNetworkReply::RawHeaderPair headerInfo, headers)
   {
-    //QString str(headerList[i].constData());
-    //qDebug()<< str;
-    headerValues.push_back(reply->rawHeader(headerList[i].constData()));
+      qDebug() << headerInfo.first << ":" << headerInfo.second;
   }
-  for ( int i = 0; i < headerList.size(); ++i)
-  {
-   QString headerName(headerList[i].constData());
-   QString headerVal(headerValues[i].constData());
-   qDebug() << headerName << "\t" << headerVal<<"\n";
-  }
+  exit(0);
     
 }
 
