@@ -6,7 +6,9 @@ headerViewer::headerViewer()
 {
  QNetworkAccessManager *manager = new QNetworkAccessManager;
  connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(output(QNetworkReply*)));
- manager->head(QNetworkRequest(QUrl("http://download.services.openoffice.org/files/stable/3.3.0/OOo-SDK_3.3.0_Linux_x86-64_install-deb_en-US.tar.gz")));
+ //manager->head(QNetworkRequest(QUrl("http://download.services.openoffice.org/files/stable/3.3.0/OOo-SDK_3.3.0_Linux_x86-64_install-deb_en-US.tar.gz")));
+ manager->head(QNetworkRequest(QUrl("http://download.services.openoffice.org/files/du.list")));
+ //manager->head((QNetworkRequest(QUrl("http://mirror.squ.edu.om/opensuse/distribution/12.1/iso/openSUSE-12.1-DVD-i586.iso"))));
 }
 
 headerViewer::~headerViewer()
